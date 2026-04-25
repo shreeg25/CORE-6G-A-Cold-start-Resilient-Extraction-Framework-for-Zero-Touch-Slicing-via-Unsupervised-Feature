@@ -24,14 +24,16 @@ The project employs a client-server architecture with a Flask backend processing
 
 ```mermaid
 graph TD
-    User[User/Client Browser] --> |Accesses Dashboard| Frontend("Web Frontend <br> (HTML, CSS, JS, Chart.js)")
-    Frontend --> |Uploads CSVs, Triggers Ops| FlaskApp(Flask Application <br> (Python))
-    FlaskApp --> |Manages ML Models| MLModels(ML Models <br> (GMM, SVC, RandomForest))
-    MLModels --> |Data Preprocessing, Training, Prediction| PandasScikitLearn(Pandas & Scikit-learn)
-    PandasScikitLearn --> |Generates Plots| MatplotlibSeaborn(Matplotlib & Seaborn)
-    FlaskApp --> |Stores Uploads| UploadDir[CSV Uploads <br> (./uploads)]
-    FlaskApp --> |Saves Results (Plots, CSVs)| ResultsDir[Results <br> (./results)]
-    FlaskApp -- Git -- Github(github.com/shreeg25/CORE-6G)
+    User[User/Client Browser] --> |Accesses Dashboard| Frontend["Web Frontend <br> (HTML, CSS, JS, Chart.js)"]
+    Frontend --> |Uploads CSVs, Triggers Ops| FlaskApp["Flask Application <br> (Python)"]
+    FlaskApp --> |Manages ML Models| MLModels["ML Models <br> (GMM, SVC, RandomForest)"]
+    MLModels --> |Data Preprocessing, Training, Prediction| PandasScikitLearn["Pandas & Scikit-learn"]
+    PandasScikitLearn --> |Generates Plots| MatplotlibSeaborn["Matplotlib & Seaborn"]
+    FlaskApp --> |Stores Uploads| UploadDir["CSV Uploads <br> (./uploads)"]
+    FlaskApp --> |Saves Results (Plots, CSVs)| ResultsDir["Results <br> (./results)"]
+    
+    %% Fixed the missing closing bracket and added quotes for the URL
+    FlaskApp -- Git --> Github(["github.com/shreeg25/CORE-6G..."])
 
     subgraph Backend
         FlaskApp
