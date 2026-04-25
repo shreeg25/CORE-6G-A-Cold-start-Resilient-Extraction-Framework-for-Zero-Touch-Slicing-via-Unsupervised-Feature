@@ -30,10 +30,11 @@ graph TD
     MLModels --> |Data Preprocessing, Training, Prediction| PandasScikitLearn["Pandas & Scikit-learn"]
     PandasScikitLearn --> |Generates Plots| MatplotlibSeaborn["Matplotlib & Seaborn"]
     FlaskApp --> |Stores Uploads| UploadDir["CSV Uploads <br> (./uploads)"]
-    FlaskApp --> |Saves Results (Plots, CSVs)| ResultsDir["Results <br> (./results)"]
     
-    %% Fixed the missing closing bracket and added quotes for the URL
-    FlaskApp -- Git --> Github(["github.com/shreeg25/CORE-6G..."])
+    %% Fixed line below: Added double quotes inside the pipes
+    FlaskApp --> |"Saves Results (Plots, CSVs)"| ResultsDir["Results <br> (./results)"]
+    
+    FlaskApp -- Git --> Github(["github.com/shreeg25/CORE-6G-A-Cold-start-Resilient-Extraction-Framework-for-Zero-Touch-Slicing-via-Unsupervised-Feature"])
 
     subgraph Backend
         FlaskApp
