@@ -46,6 +46,29 @@ graph TD
     end
 ```
 
+## 📊 Results
+
+**Comparative Performance Analysis: CNN-BiLSTM Baseline vs. Proposed Framework**
+
+> †CNN-BiLSTM latency and throughput reflect GPU-based inference overhead; edge deployment figures unavailable.  
+> ‡GMM requires zero labeled samples; supervised models use 80/20 train-test split.
+
+| Metric | CNN-BiLSTM† | GMM (Day-0)‡ | SVC (Refinement) | RF (Steady-State) |
+|--------|-------------|--------------|------------------|-------------------|
+| **Learning Paradigm** | Supervised (DL) | Unsupervised | Supervised (RBF) | Supervised (Ensemble) |
+| **Labeled Data Required** | 100% | **0%** | 80% | 80% |
+| **Model Accuracy** | 93.25% | 98.58% | 99.49% | **99.97%** |
+| **F1-Score** | 92.80% | 97.98% | 99.31% | **99.97%** |
+| **Inference Latency** | ≫10 ms† | 1.79 ms | 2.31 ms | **1.09 ms** |
+| **Throughput** | N/A (GPU-bound) | 216.62 Mbps | — | **219.07 Mbps** |
+| **Edge Deployable** | ✗ | ✓ | ✓ | ✓ |
+| **Unique Characteristic** | Spatial-Temporal DL | 6-Iter Convergence | 16k Support Vectors | Burstiness (0.17) |
+
+**Key finding:** GMM achieves 98.58% accuracy with **zero labeled data**, solving the 6G cold-start
+problem where labeled network data is unavailable at deployment. Random Forest reaches near-perfect
+99.97% accuracy at just 1.09 ms latency once labels become available — all three proposed models
+are edge deployable, unlike the CNN-BiLSTM baseline.
+
 ## 💻 Tech Stack
 
 - **Backend:** Python 3, Flask
